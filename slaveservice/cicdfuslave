@@ -1,0 +1,53 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides: cicdfuslave
+# Required-Start: $local_fs $network $named $time $syslog
+# Required-Stop: $local_fs $network $named $time $syslog
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Description: CICD for University slave launch
+### END INIT INFO
+ 
+SCRIPT=/opt/cicdfuslave/run.sh
+RUNAS=root
+ 
+PIDFILE=/var/run/cicdfuslave.pid
+LOGFILE=/var/log/cicdfuslave.log
+PIDJAVA=/var/run/cicdfuslavejar.pid
+ 
+start() {
+if [ -f /var/run/$PIDJAVA ] && kill -0 $(cat /var/run/$PIDJAVA); then
+echo 'Service already running' >&2
+return 1
+fi
+echo 'Starting service…' >&2
+local CMD="$SCRIPT &> \"$LOGFILE\""
+su -c "$CMD" $RUNAS
+echo 'Service started' >&2
+}
+ 
+stop() {
+if [ ! -f "$PIDJAVA" ] || ! kill -0 $(cat "$PIDJAVA"); then
+echo 'Service not running' >&2
+return 1
+fi
+echo 'Stopping service…' >&2
+kill -15 $(cat "$PIDJAVA") && rm -f "$PIDJAVA"
+echo 'Service stopped' >&2
+}
+
+case "$1" in
+	start)
+		start
+		;;
+	stop)
+		stop
+		;;
+	restart)
+		stop
+		start
+		;;
+*)
+echo "Usage: $0 {start|stop|restart}"
+esac
+exit $RETVAL
