@@ -9,14 +9,14 @@ sudo cp -rp $DIRECTORY/common_jobs/* $HOME_JENKINS/jobs
 sudo chown -R jenkins:jenkins $HOME_JENKINS/jobs/*
 sudo chown -R jenkins:jenkins $HOME_JENKINS/jobs
 
-wget -P -N $HOME_JENKINS/plugins http://updates.jenkins-ci.org/latest/greenballs.hpi
-wget -P -N $HOME_JENKINS/plugins http://updates.jenkins-ci.org/latest/groovy-label-assignment.hpi
-wget -P -N $HOME_JENKINS/plugins http://updates.jenkins-ci.org/latest/groovy.hpi
-wget -P -N $HOME_JENKINS/plugins http://updates.jenkins-ci.org/latest/github.hpi
-wget -P -N $HOME_JENKINS/plugins http://updates.jenkins-ci.org/latest/git-client.hpi
-wget -P -N $HOME_JENKINS/plugins http://updates.jenkins-ci.org/latest/github-api.hpi
-wget -P -N $HOME_JENKINS/plugins http://updates.jenkins-ci.org/latest/git.hpi
-wget -P -N $HOME_JENKINS/plugins http://updates.jenkins-ci.org/latest/copyartifact.hpi
+wget -N -P $HOME_JENKINS/plugins http://updates.jenkins-ci.org/latest/greenballs.hpi
+wget -N -P $HOME_JENKINS/plugins http://updates.jenkins-ci.org/latest/groovy-label-assignment.hpi
+wget -N -P $HOME_JENKINS/plugins http://updates.jenkins-ci.org/latest/groovy.hpi
+wget -N -P $HOME_JENKINS/plugins http://updates.jenkins-ci.org/latest/github.hpi
+wget -N -P $HOME_JENKINS/plugins http://updates.jenkins-ci.org/latest/git-client.hpi
+wget -N -P $HOME_JENKINS/plugins http://updates.jenkins-ci.org/latest/github-api.hpi
+wget -N -P $HOME_JENKINS/plugins http://updates.jenkins-ci.org/latest/git.hpi
+wget -N -P $HOME_JENKINS/plugins http://updates.jenkins-ci.org/latest/copyartifact.hpi
 sudo chown -R jenkins:jenkins $HOME_JENKINS/plugins/*
 
 
