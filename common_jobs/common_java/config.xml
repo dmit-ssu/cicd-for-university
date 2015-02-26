@@ -5,20 +5,20 @@
   <keepDependencies>false</keepDependencies>
   <properties>
     <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.10">
-      <projectUrl>$GITLINK/</projectUrl>
+      <projectUrl>$CICD_GITLINK/</projectUrl>
     </com.coravy.hudson.plugins.github.GithubProjectProperty>
     <jp.ikedam.jenkins.plugins.groovy__label__assignment.GroovyLabelAssignmentProperty plugin="groovy-label-assignment@1.0.0">
-      <groovyScript>return binding.getVariables().get(&quot;SLAVENAME&quot;)</groovyScript>
+      <groovyScript>return binding.getVariables().get(&quot;CICD_SLAVENAME&quot;)</groovyScript>
     </jp.ikedam.jenkins.plugins.groovy__label__assignment.GroovyLabelAssignmentProperty>
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.model.StringParameterDefinition>
-          <name>SLAVENAME</name>
+          <name>CICD_SLAVENAME</name>
           <description></description>
           <defaultValue>master</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
-          <name>GITBRANCH</name>
+          <name>CICD_GITBRANCH</name>
           <description></description>
           <defaultValue>*/master</defaultValue>
         </hudson.model.StringParameterDefinition>
@@ -29,12 +29,12 @@
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <url>$GITLINK</url>
+        <url>$CICD_GITLINK</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
       <hudson.plugins.git.BranchSpec>
-        <name>$GITBRANCH</name>
+        <name>$CICD_GITBRANCH</name>
       </hudson.plugins.git.BranchSpec>
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
@@ -49,11 +49,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>echo $JOB
-echo $GITLINK
-echo $SLAVENAME
-echo $PATH
-pwd
+      <command>pwd
 
 mkdir -p ./bin
 javac -d bin projects/oop_lab1/src/oop_lab1/*.java
@@ -61,8 +57,8 @@ jar cvf project.jar ./bin
 
 #Final part for packing results
 #change only if necessary
-#Tarrball with $JOB name
-tar -cf $JOB.tar * --exclude=&apos;*.tar&apos;
+#Tarrball with $CICD_BUILD name
+tar -cf $CICD_BUILD.tar * --exclude=&apos;*.tar&apos;
 #remove everything else, it&apos;s in the tar anyway
 ls | grep -v &apos;\w*.tar&apos; | xargs rm -rf</command>
     </hudson.tasks.Shell>

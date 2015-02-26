@@ -5,12 +5,12 @@
   <keepDependencies>false</keepDependencies>
   <properties>
     <jp.ikedam.jenkins.plugins.groovy__label__assignment.GroovyLabelAssignmentProperty plugin="groovy-label-assignment@1.0.0">
-      <groovyScript>return binding.getVariables().get(&quot;SLAVENAME&quot;)</groovyScript>
+      <groovyScript>return binding.getVariables().get(&quot;CICD_SLAVENAME&quot;)</groovyScript>
     </jp.ikedam.jenkins.plugins.groovy__label__assignment.GroovyLabelAssignmentProperty>
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.model.StringParameterDefinition>
-          <name>SLAVENAME</name>
+          <name>CICD_SLAVENAME</name>
           <description></description>
           <defaultValue>master</defaultValue>
         </hudson.model.StringParameterDefinition>
@@ -26,12 +26,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>echo $JOB
-echo $GITLINK
-echo $SLAVENAME
-echo $PATH
-
-rm -rf ../$COMMONJOB/*</command>
+      <command>rm -rf ../$CICD_COMMONJOB/*</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>

@@ -5,28 +5,28 @@
   <keepDependencies>false</keepDependencies>
   <properties>
     <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.10">
-      <projectUrl>https://github.com/dmit-ssu/cicdfucore.git/</projectUrl>
+      <projectUrl>https://github.com/devMauris/cicdfucore.git/</projectUrl>
     </com.coravy.hudson.plugins.github.GithubProjectProperty>
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.model.StringParameterDefinition>
-          <name>JOB</name>
+          <name>CICD_JOB</name>
           <description>Holds job name</description>
           <defaultValue>test</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
-          <name>GITLINK</name>
+          <name>CICD_GITLINK</name>
           <description>Holds git url</description>
           <defaultValue>none</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
-          <name>SLAVECUSTOMNAME</name>
-          <description>Slave name</description>
+          <name>CICD_SLAVECUSTOMNAME</name>
+          <description>Holds slave name</description>
           <defaultValue>slave1</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
-          <name>GITBRANCH</name>
-          <description></description>
+          <name>CICD_GITBRANCH</name>
+          <description>Holds branch to build</description>
           <defaultValue>master</defaultValue>
         </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
@@ -66,7 +66,7 @@
       <classpath></classpath>
     </hudson.plugins.groovy.SystemGroovy>
     <hudson.plugins.copyartifact.CopyArtifact plugin="copyartifact@1.34">
-      <project>$COMMONJOB</project>
+      <project>$CICD_COMMONJOB</project>
       <filter>*.tar</filter>
       <target></target>
       <excludes></excludes>
