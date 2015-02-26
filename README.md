@@ -20,11 +20,11 @@ All the builds will collect the results as .tar files.
 
 Installation
 ============
-Clone our project and run `sh common_jobs_script.sh` (assuming you have jenkins already installed)
+Clone our project and run `sh common_jobs_install.sh` (assuming you have jenkins already installed)
 
 Configure your slave so it will be able to run desired `common_job` and connect it to jenkins. Slaves have to have a `$name$_slave` as their names.
 
-Slave service is now available as an init.d. But you can connect in any way you want.
+Slave service is now available as an init.d (run `sh slave_install.sh`). But you can connect in any way you want.
 
 
 Get started
