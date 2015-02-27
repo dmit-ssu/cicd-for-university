@@ -25,8 +25,8 @@ Initial requirements
  * jenkins
  * wget
 
-To install jenkins with Vagtant these packets must be installed:
-----------------------------------------------------------------
+Vagrant installation requirements:
+----------------------------------
  * virtualbox
  * vagrant
  * virtualbox-dkms
