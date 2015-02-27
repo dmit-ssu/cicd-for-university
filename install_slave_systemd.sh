@@ -7,7 +7,7 @@ HOST_MASTER=$1
 NAME_SLAVE=$2
 
 sudo mkdir /opt/cicdfuslave
-echo "#!/bin/sh
+sudo echo "#!/bin/sh
 wget -O slave.jar http://$HOST_MASTER/jnlpJars/slave.jar
 java -jar slave.jar -jnlpUrl http://$HOST_MASTER/computer/$NAME_SLAVE"_slave"/slave-agent.jnlp & echo "'$'"! > /var/run/cicdfuslavejar.pid
 " > $DIRECTORY/run.sh
