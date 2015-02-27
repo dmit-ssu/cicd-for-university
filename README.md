@@ -46,9 +46,12 @@ Installation without Vagrant
 ============================
 Clone our project and run `install.sh` (assuming you have jenkins already installed)
 
-Configure your slave so it will be able to run desired `common_job` and connect it to jenkins. Slaves have to have a `$name$_slave` as their names.
+Slave configuration
+==================
+Configure your slave so it will be able to run desired `common_job` and connect it to jenkins. To do that add new node in jenkins settings and set `root directory` as `/opt/cicdfuslave/` and `name` to `nameofyourslave_slave`. `_slave` part is necessary.
 
-Slave service is now available as an init.d (run `sh slave_install.sh ip_HOST_MASTER NAME_SLAVE`). But you can connect in any way you want. 
+
+Slave service is now available as an init.d and systemd(run `sh install_slave_initd.sh ip_HOST_MASTER:port SLAVE_NAME` or `sh install_slave_systemd.sh ip_HOST_MASTER:port SLAVE_NAME` on your slave). But you can connect in any way you want. 
 
 Get started
 ===========
