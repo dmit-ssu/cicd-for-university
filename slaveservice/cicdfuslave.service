@@ -1,0 +1,11 @@
+[Unit]
+Description=CICD slave service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/lib/systemd/scripts/cicdfuslave start
+ExecStop=/usr/lib/systemd/scripts/cicdfuslave stop
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
